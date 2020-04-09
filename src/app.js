@@ -44,9 +44,10 @@ app.put("/repositories/:id", (request, response) => {
     title,
     url,
     techs,
+    likes:0,
   };
 
-  repository[repositoryIndex] = repository;
+  //repository[repositoryIndex] = repository;
 
   return response.json(repository);
 
