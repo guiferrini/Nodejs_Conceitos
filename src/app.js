@@ -31,11 +31,31 @@ app.post("/repositories", (request, response) => {
 });
 
 app.put("/repositories/:id", (request, response) => {
-  // TODO
+  const { id } = request.params;
+  const { title, url, techs } = request.body;
+
+  const repositoryIndex = repositories.find(repository => repository.id === id);
+
+  if (!repositoryIndex) {
+    return response.status(400).json( {error: "Repository not found."} );
+  }
+
+  const repository = {
+    title,
+    url,
+    techs,
+  };
+
+  repository[repositoryIndex] = repository;
+
+  return response.json(repository);
+
 });
 
-app.delete("/repositories/:id", (req, res) => {
-  // TODO
+app.delete("/repositories/:id", (request, response) => {
+
+
+
 });
 
 app.post("/repositories/:id/like", (request, response) => {
